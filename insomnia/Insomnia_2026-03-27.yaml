@@ -1,0 +1,358 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: KairosWorkspace
+meta:
+  id: wrk_f2ce0f8b219541d1a04c1ad8e067f938
+  created: 1774601833950
+  modified: 1774601833950
+  description: ""
+collection:
+  - name: auth
+    meta:
+      id: fld_0f8f645cf48f4378b6a7c50f57e89a35
+      created: 1774605250130
+      modified: 1774605250130
+      sortKey: -1774605250130
+      description: ""
+    children:
+      - name: POST
+        meta:
+          id: fld_b66e87ba33574c4b83e9ddcd05c8448f
+          created: 1774605275182
+          modified: 1774605278758
+          sortKey: -1774605278742
+          description: ""
+        children:
+          - url: localhost:3000/api/auth/sign-up
+            name: Sign-Up
+            meta:
+              id: req_655273665c164c48b0c50d3f28fec9b8
+              created: 1774605282485
+              modified: 1774616328649
+              isPrivate: false
+              description: ""
+              sortKey: -1774605314470
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"email" : "lukasleblondmaro@hotmail.com",
+                	"password" : "oui"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.4.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: localhost:3000/api/auth/sign-in
+            name: Sign-In
+            meta:
+              id: req_aff955adab22451aae01688b951d6d52
+              created: 1774605337350
+              modified: 1774605354138
+              isPrivate: false
+              description: ""
+              sortKey: -1772658109853
+            method: POST
+            headers:
+              - name: User-Agent
+                value: insomnia/12.4.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+  - name: users
+    meta:
+      id: fld_4d7204bfce784d4a92fc8f92b9d39cad
+      created: 1774605255784
+      modified: 1774605255784
+      sortKey: -1774605255784
+      description: ""
+    children:
+      - name: GET
+        meta:
+          id: fld_056bc13cdd7f4cbeb0624ad7ad5424b4
+          created: 1774605385403
+          modified: 1774605388134
+          sortKey: -1774605388110
+          description: ""
+        children:
+          - url: localhost:3000/api/users/me
+            name: User Self
+            meta:
+              id: req_3b4c6c3e99e544ed99e8ac12d4d2c1ce
+              created: 1774605391000
+              modified: 1774605431262
+              isPrivate: false
+              description: ""
+              sortKey: -1774605431238
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/12.4.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+  - name: spaces
+    meta:
+      id: fld_7cd11d1166bf4118bbb3e06eefdfce2d
+      created: 1774605260192
+      modified: 1774605460142
+      sortKey: -1774605260192
+      description: ""
+    children:
+      - name: GET
+        meta:
+          id: fld_97a9f8f81b94450ead806546e962a5f7
+          created: 1774605463865
+          modified: 1774605467652
+          sortKey: -1774605467630
+          description: ""
+        children:
+          - url: localhost:3000/api/spaces
+            name: Get all Spaces
+            meta:
+              id: req_a4ae810575f1429da63c4c9694d6e81f
+              created: 1774605494713
+              modified: 1774610671362
+              isPrivate: false
+              description: ""
+              sortKey: -1774605523719
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/12.4.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: localhost:3000/api/spaces/:id
+            name: Get specific Space by ID
+            meta:
+              id: req_e82998947ca4419ca43a463cb22cfb80
+              created: 1774605537288
+              modified: 1774620712927
+              isPrivate: false
+              description: ""
+              sortKey: -1774605477478.5
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/12.4.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+            pathParameters:
+              - name: id
+                value: "1"
+  - name: bookings
+    meta:
+      id: fld_f0173685e8654420a471987cbae981ee
+      created: 1774605265904
+      modified: 1774605711484
+      sortKey: -1774605265904
+      description: ""
+    children:
+      - url: localhost:3000/api/bookings/:id
+        name: Modify existing Booking
+        meta:
+          id: req_ba42f9ae32434a288a024ae4c88928ce
+          created: 1774605627160
+          modified: 1774605720770
+          isPrivate: false
+          description: ""
+          sortKey: -1774605558487
+        method: PUT
+        headers:
+          - name: User-Agent
+            value: insomnia/12.4.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+        pathParameters:
+          - name: id
+            value: ""
+      - url: localhost:3000/api/bookings/:id
+        name: Delete existing Booking
+        meta:
+          id: req_b15e3da94ad543c1b410f2c8e7847aa5
+          created: 1774605672257
+          modified: 1774605719188
+          isPrivate: false
+          description: ""
+          sortKey: -1774605558587
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/12.4.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+        pathParameters:
+          - name: id
+            value: ""
+      - url: localhost:3000/api/bookings
+        name: See all bookings
+        meta:
+          id: req_daebd3c16a6d41128610d9c5cdd7dfd3
+          created: 1774605786829
+          modified: 1774605797194
+          isPrivate: false
+          description: ""
+          sortKey: -1774605558687
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.4.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/api/bookings/:id
+        name: See a specific booking by ID
+        meta:
+          id: req_772e6e40c2dd423aa9ec0d0b9bd1f8a8
+          created: 1774605814203
+          modified: 1774605818219
+          isPrivate: false
+          description: ""
+          sortKey: -1774605558637
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.4.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+        pathParameters:
+          - name: id
+            value: ""
+      - name: POST
+        meta:
+          id: fld_4ca42f6485c148988538586865b465e5
+          created: 1774605556479
+          modified: 1774605626061
+          sortKey: -1774605558437
+          description: ""
+        children:
+          - url: localhost:3000/api/bookings
+            name: Create new Booking
+            meta:
+              id: req_4e4dcd84f97b4a35bd6e35cc05ecdb56
+              created: 1774605576620
+              modified: 1774605616955
+              isPrivate: false
+              description: ""
+              sortKey: -1774605579702
+            method: POST
+            headers:
+              - name: User-Agent
+                value: insomnia/12.4.0
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: PUT
+        meta:
+          id: fld_1130d3d5d8e94b4e8d8deee2883e93ef
+          created: 1774605706526
+          modified: 1774605709136
+          sortKey: -1774605558537
+          description: ""
+      - name: DELETE
+        meta:
+          id: fld_515a1cfbc8f04192b9dd051ad3747292
+          created: 1774605715363
+          modified: 1774605717296
+          sortKey: -1774605558637
+          description: ""
+      - name: GET
+        meta:
+          id: fld_719ccf6ca9e34512a494100f5b438a58
+          created: 1774605767691
+          modified: 1774605769259
+          sortKey: -1774605558737
+          description: ""
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_840914b8623ed73d5d4e7fc6b4565341bb94949e
+    created: 1774601833955
+    modified: 1774601833955
+environments:
+  name: Base Environment
+  meta:
+    id: env_840914b8623ed73d5d4e7fc6b4565341bb94949e
+    created: 1774601833952
+    modified: 1774601833952
+    isPrivate: false

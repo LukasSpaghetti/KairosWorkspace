@@ -12,29 +12,94 @@ datasource db {
 }
 
 model User {
-  id String @id @default(cuid())
-  email String @unique
-  firstName String
-  lastName String
-  reservations Reservation[]
+  id            String    @id
+  name          String
+  email         String    @unique
+  emailVerified Boolean   @default(false)
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  sessions      Session[]
+  accounts      Account[]
+  bookings Booking[]
+
+  @@map("user")
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id])
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@map("account")
+}
+
+model Verification {
+  id         String    @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime? @default(now())
+  updatedAt  DateTime? @updatedAt
+
+  @@map("verification")
+}
+
+enum SpaceType {
+  OPEN_SPACE
+  BUREAU_PRIVE
+  SALLE_REUNION
+  CABINE
 }
 
 model Space {
-  id String @id @default(cuid())
+  id Int @id @default(autoincrement())
   name String
   description String
-  capacity String
-  type String
-  reservations Reservation[]
+  capacity Int
+  type SpaceType
+  bookings Booking[]
+
+  @@map("spaces")
 }
 
-model Reservation {
+model Booking {
   id String @id @default(cuid())
-  date DateTime
-  start DateTime
-  end DateTime
-  userId String?
-  user User? @relation(fields: [userId], references: [id])
-  spaceId String?
-  space Space? @relation(fields: [spaceId], references: [id])
+  date DateTime @db.Date
+  start DateTime @db.Time
+  end DateTime @db.Time
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  spaceId Int
+  space Space @relation(fields: [spaceId], references: [id], onDelete: Cascade)
+
+  @@unique([spaceId, date, start, end])
+
+  @@map("bookings")
 }
