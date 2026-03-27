@@ -4,7 +4,7 @@ import { toNodeHandler } from "better-auth/node";
 import { auth } from "@/lib/auth";
 import db from "@/lib/db";
 // import usersRouter from "@/routes/users.route";
-// import bookingsRouter from "@/routes/bookings.route";
+import bookingsRouter from "@/routes/bookings.route";
 import spacesRouter from "@/routes/spaces.route";
 // import authRouter from "@/routes/auth.route";
 
@@ -27,7 +27,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 // app.use("/users", usersRouter);
-// app.use("/bookings", bookingsRouter);
+app.use("/api/bookings", bookingsRouter);
 app.use("/api/spaces", spacesRouter)
 
 // app.use("/api/auth", authRouter)

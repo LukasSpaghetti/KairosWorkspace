@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import * as bookingsService from "@/services/bookings.service";
-import db from "@/lib/db"
+import { createBookingSchema } from "@/lib/schemas";
 
 export const getAll = async (req: Request, res: Response) => {
     try {
@@ -37,18 +37,11 @@ export const deleteById = async (req : Request, res : Response) => {
 
 export const modify = async (req : Request, res : Response) => {
     try {
-        const {id} = req.params
-        const {date, start, end, spaceId} = req.body
-
-        const booking = await db.booking.update({
-            where: {id : String(id)},
-            data : {
-                date,
-                start,
-                end,
-                spaceId
-            }
-        })
+        const parsed = createBookingSchema.safeParse(req.body);
+        if(!parsed.success){
+            return res.status(400).json({message : "Données invalides", errors : parsed.error.issues});
+        }
+        const booking = await bookingsService.create(req.userId! , parsed.data)
         res.json(booking)
     } catch (error) {
         res.status(500).json({message : "Erreur server", error});

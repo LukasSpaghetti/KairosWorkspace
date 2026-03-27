@@ -4,7 +4,7 @@ export async function getAllSpaces() {
   return db.space.findMany();
 }
 
-export async function getSpaceById(id: string) {
+export async function getSpaceById(id: number) {
   const space = await db.space.findUnique({
     where: { id }});
 

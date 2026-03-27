@@ -27,4 +27,11 @@ export const signInSchema = z.object({
     password: z.string().min(1, "Le mot de passe est requis"),
 });
 
+export const createBookingSchema = z.object({
+  date: z.date(),
+  start: z.date(),
+  end: z.date(),
+  spaceId: z.string()
+});
+
 export type SignInFormData = z.infer<typeof signInSchema>;

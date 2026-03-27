@@ -11,8 +11,8 @@ router.get("/:id", bookingsController.getById);
 
 router.delete("/:id", bookingsController.deleteById)
 
-router.put("/:id", bookingsController.modifyBooking)
+router.put("/:id", bookingsController.modify)
 
-router.post("/", bookingsController.createNewBooking)
+router.post("/", bookingsController.create)
 
 export default router;
